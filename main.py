@@ -12,6 +12,7 @@ from string import ascii_letters, digits
 config = configparser.ConfigParser()
 config.read("settings.ini")
 TOKEN = config["tgbot"]["token"]
+
 class IsPrivate(BoundFilter):
     async def check(self, message: types.Message):
         return message.chat.type == types.ChatType.PRIVATE
@@ -23,8 +24,6 @@ class Info(StatesGroup):
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot, storage=MemoryStorage())
-
-
 
 @dp.message_handler(IsPrivate(), commands=['start'], state='*')
 async def start_command(message: types.Message, state: FSMContext):
