@@ -1,2 +1,2 @@
-web: $PORT=443 python main.py
-
+release: python manage.py runserver 0.0.0.0:$PORT
+web: python main.py
